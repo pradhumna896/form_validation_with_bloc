@@ -45,7 +45,7 @@ class SignInScreen extends StatelessWidget {
                 BlocProvider.of<SigninBloc>(context).add(SigninTextChangedEvent(
                     emailController.text, passwordController.text));
               },
-              decoration: const InputDecoration(hintText: "Email Address"),
+              decoration: const InputDecoration(hintText: "Password"),
             ),
             const SizedBox(
               height: 20,
@@ -58,9 +58,10 @@ class SignInScreen extends StatelessWidget {
               }
               return ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                       minimumSize: const Size(double.infinity, 50),
                       primary: (state is SigninValidState)
-                          ? Colors.blue
+                          ? Colors.deepOrange
                           : Colors.grey),
                   onPressed: () {
                     if (state is SigninValidState) {
@@ -69,7 +70,7 @@ class SignInScreen extends StatelessWidget {
                               emailController.text, passwordController.text));
                     }
                   },
-                  child: const Text("Signin"));
+                  child: const Text("Sign-In",style:TextStyle(fontSize: 24,fontWeight: FontWeight.w500)));
             }))
           ],
         ),

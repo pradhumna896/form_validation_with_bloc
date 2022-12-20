@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formvalidationusingbloc/signin_screen/bloc/signin_bloc.dart';
 import 'package:formvalidationusingbloc/signin_screen/signin_screen.dart';
@@ -11,7 +9,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home Page")),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text("Home Page")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -19,6 +20,11 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             width: double.infinity,
             child: ElevatedButton(
+               style:ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      minimumSize: const Size(double.infinity, 50),
+                      primary:  Theme.of(context).primaryColor),
+                          
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: ((context) => BlocProvider(
@@ -26,7 +32,7 @@ class HomePage extends StatelessWidget {
                         child: SignInScreen(),
                       ))));
                 },
-                child: const Text("Signin")),
+                child: const Text("Sign-In",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),)),
           )
         ],
       ),
